@@ -1,0 +1,28 @@
+
+/////////////// build Java file ///////////////
+
+java -jar ./lib/sparql2flink.jar ./query.rq ./dataset.ttl 
+
+
+/////////////// compile Java file ///////////////
+javac -cp "./lib/sparql2flink.jar" Query.java
+
+
+/////////////// run Java class ///////////////
+java -cp "./lib/sparql2flink.jar:./" Query
+
+
+/////**********************************************////
+
+
+/////////////// build jar ///////////////
+jar -cfvm query.jar META-INF/MANIFEST.MF lib/sparql2flink.jar ./Query.class 
+
+/////////////// run jar file ///////////////
+java -jar query.jar
+
+/////////////// content MANIFEST.MF file ///////////////
+MANIFEST.MF
+Manifest-Version: 1.0
+Main-Class: Query
+Class-Path: lib/sparql2flink.jar
